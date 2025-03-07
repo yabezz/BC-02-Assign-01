@@ -1,0 +1,611 @@
+/* General css */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
+
+/**************************/
+/* GENRAL REUSABLE COMPONENTS */
+/**************************/
+
+.container {
+  /* 1140px */
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+
+  /* margin-bottom: 9.6rem; */
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  color: #333;
+  /* color: #45260a; */
+  /* color: #343a40; */
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  /* Only necessary for .btn */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+
+  /* border: 3px solid #fff; */
+
+  /* Trick to add border inside */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+*:focus {
+  outline: none;
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+/* HELPER/SETTINGS CLASSES */
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+
+strong {
+  font-weight: 500;
+}
+
+/* general css ends here */
+
+/**************************/
+/* HEADER */
+/**************************/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdf2e9;
+
+  /* Because we want header to be sticky later */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+
+.logo {
+  height: 2.2rem;
+}
+
+/* Remove Underline and Set Color for #main-name */
+#main-name {
+  text-decoration: none; /* Removes underline */
+  color: #cf711f; /* Sets text color */
+}
+
+/* Ensure the color stays the same even on hover */
+#main-name:hover {
+  color: #cf711f;
+}
+
+/**************************/
+/* NAVIGATION */
+/**************************/
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #cf711f;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #e67e22;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: #cf711f;
+}
+
+/**************************/
+/* home */
+/**************************/
+
+.section-hero {
+  background-color: #fdf2e9;
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9.6rem;
+  align-items: center;
+}
+
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+}
+
+.hero-img {
+  width: 80%;
+}
+
+.delivered-meals {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 8rem;
+}
+
+.delivered-imgs {
+  display: flex;
+}
+
+.delivered-imgs img {
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  margin-right: -1.6rem;
+  border: 3px solid #fdf2e9;
+}
+
+.delivered-imgs img:last-child {
+  margin: 0;
+}
+
+.delivered-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.delivered-text span {
+  color: #cf711f;
+  font-weight: 700;
+}
+/* Ends here */
+/* Qualification section */
+/* Qualification Section Styling */
+.timeline-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.timeline-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-title {
+  text-align: center;
+  color: #cf711f;
+  font-size: 3rem; /* Bigger font size for the main title */
+  margin-bottom: 20px;
+}
+
+.education-section {
+  margin-bottom: 30px;
+  background-color: #fdf2e9;
+}
+
+.education-title {
+  color: #974d0d;
+  margin-bottom: 15px;
+  /* font-style: italic; */
+  font-size: 2rem; /* Bigger font size for section titles */
+}
+
+.education-details {
+  margin: 10px 0;
+  font-size: 1.5rem; /* Bigger font size for details */
+}
+
+.education-date {
+  font-style: italic;
+  color: #777;
+  font-size: 1.25rem; /* Bigger font size for dates */
+}
+
+.education-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.25rem; /* Bigger font size for links */
+}
+
+.education-link:hover {
+  text-decoration: underline;
+}
+
+/* Amma */
+/* New Section: Image with Text */
+.image-text-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #fdf2e9;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.image-text-section img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 750px; /* Adjust as needed */
+  height: 450px; /* Adjust as needed */
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 20px;
+  object-fit: cover; /* Ensures the image fits well */
+}
+
+.image-text-content {
+  flex: 1;
+}
+
+.image-text-bold {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.image-text-sub {
+  font-size: 1.25rem;
+  color: #777;
+}
+
+/* Skills */
+/* Skills Section */
+.skills-section {
+  margin-top: 40px;
+  text-align: center; /* Center the heading */
+  padding-bottom: 45px;
+  background-color: #fdf2e9;
+}
+
+.skills-title {
+  padding-top: 15px;
+  font-size: 3rem; /* Bigger font size */
+  font-weight: bold; /* Bold text */
+  color: #cf711f;
+  margin-bottom: 30px; /* Spacing below the heading */
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center; /* Center the columns */
+  gap: 40px; /* Space between the two columns */
+}
+
+.skills-column {
+  text-align: left; /* Align skill points to the left */
+}
+
+.skill-item {
+  font-size: 2rem; /* Bigger text for skills */
+  color: #555;
+  padding: 13px 3px; /* Padding for each skill point */
+  margin: 0; /* Remove default margin */
+}
+/* skills part ends here */
+
+/* Project part starts here */
+/* List Section */
+.list-section {
+  background-color: #fdf2e9;
+  padding: 45px 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.list-title {
+  font-size: 2.5rem; /* Bigger font size */
+  font-weight: bold; /* Bold text */
+  color: #cf711f;
+  margin-bottom: 20px; /* Spacing below the heading */
+}
+
+.custom-list {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.custom-list li {
+  margin-bottom: 20px; /* Spacing between list items */
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Optional: Add a separator line */
+}
+
+.list-title-bold {
+  font-size: 1.75rem; /* Bigger font size for titles */
+  font-weight: bold; /* Bold text */
+  color: #007bff;
+  display: block; /* Ensure the title is on its own line */
+  margin-bottom: 5px; /* Spacing between title and description */
+}
+
+.paper-titles {
+  font-size: 20px;
+  font-weight: 1000;
+  text-decoration: none;
+  color: #974d0d;
+}
+
+.list-description {
+  font-size: 1.25rem; /* Font size for descriptions */
+  color: #555;
+  display: block; /* Ensure the description is on its own line */
+}
+
+/* Copyrights part */
+/* Contact Section */
+.contact-section {
+  margin-top: 50px;
+  text-align: center;
+  padding: 20px;
+  background-color: #fdf2e9;
+  border-top: 1px solid #ddd;
+}
+
+.contact-title {
+  font-size: 2.5rem; /* Bigger font size */
+  font-weight: bold; /* Bold text */
+  color: #cf711f;
+  margin-bottom: 20px; /* Spacing below the heading */
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Space between the two columns */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.right-column {
+  text-align: left;
+  padding-left: 160px;
+}
+
+.contact-link {
+  font-size: 1.25rem; /* Font size for links */
+  color: brown;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: italic;
+  display: block; /* Ensure each link is on its own line */
+  margin-bottom: 10px; /* Spacing between links */
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.flag-icon {
+  width: 20px; /* Size of the flag icon */
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px; /* Spacing between flag and text */
+}
+
+.copyright {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 20px; /* Spacing above the copyright */
+}
+
+/* Animation */
+/* Slide-in Animation */
+/* .slide-in {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0);
+} */
